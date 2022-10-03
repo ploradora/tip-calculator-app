@@ -1,0 +1,284 @@
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: auto;
+  font-family: "Space Mono", monospace;
+  background-color: #bff2ec;
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    height: 100vh;
+    display: -ms-grid;
+    display: grid;
+    place-items: end;
+    place-items: center;
+  }
+}
+
+main {
+  width: 100%;
+}
+
+main h1 {
+  margin-top: 3rem;
+  text-align: center;
+  line-height: 2rem;
+  letter-spacing: .5rem;
+  margin-bottom: 2.5rem;
+  color: #006166;
+}
+
+main h1 > p {
+  font-size: 1.5rem;
+}
+
+main section {
+  padding: 1.5rem;
+  border-radius: 30px 30px 0 0;
+  background-color: white;
+  max-width: 420px;
+  margin: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(300px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+main section .calc p {
+  font-size: 1.1rem;
+  margin-bottom: .4rem;
+  font-weight: 700;
+  color: #5e7a7d;
+}
+
+main section .calc .input-bill {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-bottom: 2.5rem;
+}
+
+main section .calc .input-bill::after {
+  position: absolute;
+  font-family: "Space Mono", monospace;
+  font-size: 1.5rem;
+  left: 1rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #7f9c9f;
+  content: '$';
+}
+
+main section .calc .input-bill input {
+  font-family: "Space Mono", monospace;
+  text-align: right;
+  color: #00494d;
+  font-weight: 700;
+  width: 100%;
+  background-color: #e5ebeb;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+main section .calc .input-num-people {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+main section .calc .input-num-people .fa-user {
+  position: absolute;
+  left: 1rem;
+  color: #7f9c9f;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+main section .calc .input-num-people input {
+  font-family: "Space Mono", monospace;
+  text-align: right;
+  color: #00494d;
+  font-weight: 700;
+  width: 100%;
+  background-color: #e5ebeb;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+main section .calc .input-number-style {
+  font-family: "Space Mono", monospace;
+  color: #00494d;
+  font-weight: 700;
+}
+
+main section .calc .grid-tip {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(140px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.1rem;
+}
+
+main section .calc .grid-tip button {
+  font-size: 1.3rem;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  padding: .6rem;
+  background-color: #00494d;
+  color: #fff;
+  cursor: pointer;
+}
+
+main section .calc .grid-tip .btn-active-perc {
+  background-color: #26c0ab;
+  color: #00494d;
+}
+
+main section .calc .grid-tip #custom {
+  font-size: 1.3rem;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  text-align: center;
+  background-color: #e5ebeb;
+  border: none;
+  border-radius: 6px;
+}
+
+main section .calc .input-txt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main section .calc .input-txt .error-p {
+  color: #d35555;
+  opacity: 0;
+  -webkit-transition: opacity .13s ease-in;
+  transition: opacity .13s ease-in;
+}
+
+main section .calc .input-txt .show-error-msg {
+  -webkit-transition: opacity .13s ease-in;
+  transition: opacity .13s ease-in;
+  opacity: 1;
+}
+
+main section .display {
+  background-color: #00494d;
+  border-radius: 15px;
+  padding: 2rem 1.3rem 1.3rem 1.3rem;
+  font-weight: 700;
+}
+
+main section .display .result-amount,
+main section .display .result-total {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+main section .display .result-amount p:first-child,
+main section .display .result-total p:first-child {
+  color: #fff;
+  line-height: 1.5;
+}
+
+main section .display .result-amount p:last-child,
+main section .display .result-total p:last-child {
+  color: #7f9c9f;
+}
+
+main section .display .result-amount .amount-display,
+main section .display .result-amount .total-display,
+main section .display .result-total .amount-display,
+main section .display .result-total .total-display {
+  font-size: 2rem;
+  color: #26c0ab;
+}
+
+main section .display button {
+  width: 100%;
+  text-align: center;
+  font-size: 1.3rem;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 6px;
+  padding: .6rem;
+  background-color: #26c0ab;
+  color: #00494d;
+}
+
+@media only screen and (min-width: 1000px) {
+  main h1 {
+    margin-top: unset;
+  }
+  main section {
+    padding: 2.5rem;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1050px;
+    border-radius: 30px;
+  }
+  main section .display {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 2.5rem;
+  }
+  main section .display .result-amount .amount-display {
+    font-size: 2.8rem;
+  }
+  main section .display .result-total {
+    margin-top: 2rem;
+  }
+  main section .display .result-total .total-display {
+    font-size: 2.8rem;
+  }
+  main section .display button {
+    padding: 1rem;
+  }
+}
+/*# sourceMappingURL=main.css.map */
