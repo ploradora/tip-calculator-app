@@ -1,259 +1,265 @@
-@import 'variables';
+@import "variables";
 
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-*, 
+*,
 *::before,
 *::after {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 @mixin desktop {
-    @media only screen and (min-width: 1000px) {
-        @content        
-    }
-};
+  @media only screen and (min-width: 1000px) {
+    @content;
+  }
+}
 
 @mixin input {
-    position: absolute;
-    font-family: $ff;
-    font-size: 1.5rem;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: $Dark-grayish-cyan;
+  position: absolute;
+  font-family: $ff;
+  font-size: 1.5rem;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $Dark-grayish-cyan;
 }
 
 @mixin inputs {
-    input {
-        font-family: $ff;
-        text-align: right;
-        color: $Very-dark-cyan;
-        font-weight: $f-weight-2;
-        width: 100%;
-        background-color: lighten($Dark-grayish-cyan, 35%);
-        border: none;
-        border-radius: 6px;
-        font-size: 1.5rem;
-        // padding: 1.5rem 1rem 1rem 1rem;
-        padding: 1rem;
-        }
+  input {
+    font-family: $ff;
+    text-align: right;
+    color: $Very-dark-cyan;
+    font-weight: $f-weight-2;
+    width: 100%;
+    background-color: lighten($Dark-grayish-cyan, 35%);
+    border: none;
+    border-radius: 6px;
+    font-size: 1.5rem;
+    // padding: 1.5rem 1rem 1rem 1rem;
+    padding: 1rem;
+  }
 }
 
 body {
-    width: 100%;
-    height: auto;
-    font-family: $ff;
-    background-color: lighten($Strong-cyan, 40%);
-    
+  width: 100%;
+  height: auto;
+  font-family: $ff;
+  background-color: lighten($Strong-cyan, 40%);
 
-    @include desktop {
-        height: 100vh;
-        display: grid;
-        place-items: end;
-        place-items: center;
-    }
+  @include desktop {
+    height: 100vh;
+    display: grid;
+    place-items: end;
+    place-items: center;
+  }
 }
 
 main {
-    width: 100%;
+  position: relative;
+  width: 100%;
+  padding-bottom: 65px;
 
-    h1 {
-        margin-top: 3rem;
-        text-align: center;
-        line-height: 2rem;
-        letter-spacing: .5rem;
+  h1 {
+    margin-top: 3rem;
+    text-align: center;
+    line-height: 2rem;
+    letter-spacing: 0.5rem;
+    margin-bottom: 2.5rem;
+    color: lighten($Very-dark-cyan, 5%);
+    > p {
+      font-size: 1.5rem;
+    }
+  }
+  section {
+    padding: 1.5rem;
+    border-radius: 30px 30px 0 0;
+    background-color: $White;
+    width: 90%;
+    max-width: 420px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    .calc {
+      p {
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+        font-weight: $f-weight-2;
+        color: $Darker-grayish-cyan;
+      }
+
+      .input-bill {
+        position: relative;
+        width: 100%;
+        height: auto;
         margin-bottom: 2.5rem;
-        color: lighten($Very-dark-cyan, 5%);
-        >p {
-            font-size: 1.5rem;
+        &::after {
+          @include input;
+          content: "$";
         }
+
+        @include inputs;
+      }
+
+      .input-num-people {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-bottom: 2rem;
+        .fa-user {
+          position: absolute;
+          left: 1rem;
+          color: $Dark-grayish-cyan;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        @include inputs;
+      }
+
+      .input-number-style {
+        font-family: $ff;
+        color: $Very-dark-cyan;
+        font-weight: $f-weight-2;
+      }
+
+      .grid-tip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2.1rem;
+
+        button {
+          font-size: 1.3rem;
+          font-family: $ff;
+          font-weight: $f-weight-2;
+          border: none;
+          border-radius: 6px;
+          padding: 0.6rem;
+          background-color: $Very-dark-cyan;
+          color: #fff;
+          cursor: pointer;
+        }
+
+        .btn-active-perc {
+          background-color: $Strong-cyan;
+          color: $Very-dark-cyan;
+        }
+
+        #custom {
+          font-size: 1.3rem;
+          font-family: $ff;
+          font-weight: $f-weight-2;
+          text-align: center;
+          background-color: lighten($Dark-grayish-cyan, 35%);
+          border: none;
+          border-radius: 6px;
+        }
+      }
+
+      .input-txt {
+        display: flex;
+        justify-content: space-between;
+
+        .error-p {
+          color: rgb(211, 85, 85);
+          opacity: 0;
+          transition: opacity 0.13s ease-in;
+        }
+
+        .show-error-msg {
+          transition: opacity 0.13s ease-in;
+          opacity: 1;
+        }
+      }
+    }
+
+    .display {
+      background-color: $Very-dark-cyan;
+      border-radius: 15px;
+      padding: 2rem 1.3rem 1.3rem 1.3rem;
+      font-weight: $f-weight-2;
+
+      .result-amount,
+      .result-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        p:first-child {
+          color: #fff;
+          line-height: 1.5;
+        }
+        p:last-child {
+          color: $Dark-grayish-cyan;
+        }
+
+        .amount-display,
+        .total-display {
+          font-size: 2rem;
+          color: $Strong-cyan;
+        }
+      }
+      button {
+        width: 100%;
+        text-align: center;
+        font-size: 1.3rem;
+        font-family: $ff;
+        font-weight: $f-weight-2;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 6px;
+        padding: 0.6rem;
+        background-color: $Strong-cyan;
+        color: $Very-dark-cyan;
+      }
+    }
+  }
+  .attribution {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @include desktop {
+    h1 {
+      margin-top: unset;
     }
     section {
-        padding: 1.5rem;
-        border-radius: 30px 30px 0 0;
-        background-color: $White;
-        max-width: 420px;
-        margin: auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      padding: 2.5rem;
+      gap: 2rem;
+      width: 100%;
+      max-width: 1050px;
+      border-radius: 30px;
 
-        .calc {
-            p {
-                font-size: 1.1rem;
-                margin-bottom: .4rem;
-                font-weight: $f-weight-2;
-                color: $Darker-grayish-cyan;
-            }
+      .display {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2.5rem;
 
-            .input-bill {
-                position: relative;
-                width: 100%;
-                height: auto;
-                margin-bottom: 2.5rem;
-                &::after {
-                    @include input;
-                    content: '$';
-                }
-
-                @include inputs;
-            }
-            
-            .input-num-people {
-                position: relative;
-                width: 100%;
-                height: auto;
-                margin-bottom: 2rem;
-                .fa-user {
-                    position: absolute;
-                    left: 1rem;
-                    color: $Dark-grayish-cyan;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    
-                }
-                @include inputs;
-            }
-
-            .input-number-style{
-                font-family: $ff;
-                color: $Very-dark-cyan;
-                font-weight: $f-weight-2;
-            }
-
-            .grid-tip {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                gap: 1rem;
-                margin-bottom: 2.1rem;
-
-                button {
-                    font-size: 1.3rem;
-                    font-family: $ff;
-                    font-weight: $f-weight-2;
-                    border: none;
-                    border-radius: 6px;
-                    padding: .6rem;
-                    background-color: $Very-dark-cyan;
-                    color: #fff;
-                    cursor: pointer;
-                }
-
-                .btn-active-perc {
-                    background-color: $Strong-cyan;
-                    color: $Very-dark-cyan;
-                }
-
-                #custom {
-                    font-size: 1.3rem;
-                    font-family: $ff;
-                    font-weight: $f-weight-2;
-                    text-align: center;
-                    background-color: lighten($Dark-grayish-cyan, 35%);
-                    border: none;
-                    border-radius: 6px;
-                }
-            }
-
-            .input-txt {
-                display: flex;
-                justify-content: space-between;
-
-                .error-p {
-                    color: rgb(211, 85, 85);
-                    opacity: 0;
-                    transition: opacity .13s ease-in;
-                }
-                
-                .show-error-msg {
-                    transition: opacity .13s ease-in;
-                    opacity: 1;
-                }
-            }
+        .result-amount {
+          .amount-display {
+            font-size: 2.8rem;
+          }
         }
 
-        .display {
-            background-color: $Very-dark-cyan;
-            border-radius: 15px;
-            padding: 2rem 1.3rem 1.3rem 1.3rem;
-            font-weight: $f-weight-2;
+        .result-total {
+          margin-top: 2rem;
 
-            .result-amount,
-            .result-total {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 1.5rem;
-                p:first-child {
-                    color: #fff;
-                    line-height: 1.5;
-                }
-                p:last-child {
-                    color: $Dark-grayish-cyan;
-                }
-
-                .amount-display,
-                .total-display {
-                    font-size: 2rem;
-                    color: $Strong-cyan;
-                }
-            }
-            button {
-                width: 100%;
-                text-align: center;
-                font-size: 1.3rem;
-                font-family: $ff;
-                font-weight: $f-weight-2;
-                text-transform: uppercase;
-                border: none;
-                border-radius: 6px;
-                padding: .6rem;
-                background-color: $Strong-cyan;
-                color: $Very-dark-cyan;
-            }
+          .total-display {
+            font-size: 2.8rem;
+          }
         }
+
+        button {
+          padding: 1rem;
+        }
+      }
     }
-
-    @include desktop {
-        h1 {
-            margin-top: unset;
-        }
-        section {
-            padding: 2.5rem;
-            gap: 2rem;
-            width: 100%;
-            max-width: 1050px;
-            border-radius: 30px;
-
-            .display {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                padding: 2.5rem;
-
-                .result-amount {
-                    .amount-display {
-                        font-size: 2.8rem;
-                    }
-                }
-
-                .result-total {
-                    margin-top: 2rem;
-
-                    .total-display {
-                        font-size: 2.8rem;
-                    }
-                }
-
-                button {
-                    padding: 1rem;
-                }
-            }
-        }
-    }
+  }
 }
-
