@@ -39,7 +39,6 @@ html {
     border: none;
     border-radius: 6px;
     font-size: 1.5rem;
-    // padding: 1.5rem 1rem 1rem 1rem;
     padding: 1rem;
   }
 }
@@ -82,7 +81,7 @@ main {
     max-width: 420px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 
     .calc {
       p {
@@ -150,6 +149,7 @@ main {
         }
 
         #custom {
+          height: 49.6px;
           font-size: 1.3rem;
           font-family: $ff;
           font-weight: $f-weight-2;
@@ -163,7 +163,9 @@ main {
       .input-txt {
         display: flex;
         justify-content: space-between;
-
+        p:first-child {
+          width: 100%;
+        }
         .error-p {
           color: rgb(211, 85, 85);
           opacity: 0;
@@ -226,6 +228,7 @@ main {
   }
 
   @include desktop {
+    padding-bottom: 30px;
     h1 {
       margin-top: unset;
     }
@@ -260,6 +263,9 @@ main {
           padding: 1rem;
         }
       }
+    }
+    .attribution {
+        bottom: 0;
     }
   }
 }
